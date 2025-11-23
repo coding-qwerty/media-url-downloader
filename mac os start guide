@@ -56,9 +56,6 @@ Minor code notes (non-blocking)
 
 The code requires yt-dlp to be installed; if not installed the code raises a RuntimeError and prompts installation.
 The UI uses frameless/transparent flags — these generally work on mac but visual differences may appear.
-There’s an unreachable duplicated block inside detect_platform (harmless but noisy).
-If you want, I can:
-
 
 
 
