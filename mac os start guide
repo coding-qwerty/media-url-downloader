@@ -9,8 +9,24 @@ python3 media_downloader.py
 
 
 
-Next time they want to use it
 
-From Terminal: cd ~/MediaDownloader
+If they accidentally deactivate the venv and need to re‑install (optional “step 2”)
+
+
+cd ~/MediaDownloader
+source venv/bin/activate
+pip install --upgrade pip
+pip install PyQt5 yt-dlp requests
+python3 media_downloader.py
+
+
+
+
+
+
+
+Every later time (normal use)
+
+cd ~/MediaDownloader
 source venv/bin/activate
 python3 media_downloader.py
