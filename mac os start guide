@@ -30,3 +30,38 @@ Every later time (normal use)
 cd ~/MediaDownloader
 source venv/bin/activate
 python3 media_downloader.py
+
+
+
+What you must have on macOS
+
+Python 3.8+ (installed and used with python3).
+yt-dlp installed: pip3 install -U yt-dlp
+PyQt5 installed: pip3 install PyQt5 (or you can adapt to PySide2/PyQt6 if preferred)
+requests: pip3 install requests
+ffmpeg installed and on PATH — required by yt-dlp to merge video+audio and for postprocessing: brew install ffmpeg (or download a binary)
+How to run
+
+From Terminal in the repo folder: python3 media_downloader.py
+mac-specific behaviors and caveats
+
+Opening the download folder: the code uses subprocess.Popen(["open", OUTPUT_DIR]) for Darwin — that is correct for macOS.
+System tray behavior: QSystemTrayIcon works on macOS but behaviour can vary (icon placement, visibility) depending on macOS version and whether you package the script as an app bundle. If you don’t see the tray icon, run from Terminal or consider packaging (py2app, briefcase, etc.).
+GUI libraries: pip install PyQt5 usually works, but on some macOS setups you may prefer PySide2 or need to install additional Qt runtime/support if wheels are unavailable.
+ffmpeg: without ffmpeg, yt-dlp will fail when trying to merge video+audio or convert formats. If you see merge errors, install ffmpeg.
+File permissions: default output directory is ~/Downloads/YouTube Videos — the app tests write permission, but if you change the folder to a protected location you may need to allow Terminal/app access in System Preferences > Security & Privacy.
+Logging file downloader_errors.log will be created in the process working directory. If you double-click a .py file from Finder the CWD may be different — running from Terminal is more predictable.
+Packaging/signing: if you want a double-clickable .app, you’ll likely need to bundle and sign/notarize the app for smooth distribution on modern macOS.
+Minor code notes (non-blocking)
+
+The code requires yt-dlp to be installed; if not installed the code raises a RuntimeError and prompts installation.
+The UI uses frameless/transparent flags — these generally work on mac but visual differences may appear.
+There’s an unreachable duplicated block inside detect_platform (harmless but noisy).
+If you want, I can:
+
+
+
+
+
+
+
