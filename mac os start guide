@@ -1,0 +1,16 @@
+cd ~/MediaDownloader
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install PyQt5 yt-dlp requests
+python3 media_downloader.py
+
+
+
+
+
+Next time they want to use it
+
+From Terminal: cd ~/MediaDownloader
+source venv/bin/activate
+python3 media_downloader.py
